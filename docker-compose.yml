@@ -2,8 +2,6 @@ version: '3.8'
 x-common:
   database:
     &db-environment
-    # Do not remove the "&db-password" from the end of the line below, it is important
-    # for Panel functionality.
     MYSQL_PASSWORD: &db-password "CHANGE_ME"
     MYSQL_ROOT_PASSWORD: "CHANGE_ME_TOO"
   panel:
@@ -25,13 +23,6 @@ x-common:
     MAIL_PASSWORD: ""
     MAIL_ENCRYPTION: "true"
 
-#
-# ------------------------------------------------------------------------------------------
-# DANGER ZONE BELOW
-#
-# The remainder of this file likely does not need to be changed. Please only make modifications
-# below if you understand what you are doing.
-#
 services:
   database:
     image: mariadb:10.5
@@ -73,11 +64,6 @@ services:
       REDIS_HOST: "cache"
       DB_HOST: "database"
       DB_PORT: "3306"
-networks:
-  default:
-    ipam:
-      config:
-        - subnet: 172.20.0.0/16
 
 volumes:
   app:
